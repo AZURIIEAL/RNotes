@@ -1,0 +1,96 @@
+# Logistic Regression
+
+Logistic regression in R Programming is a classification algorithm used to find the probability of event success and event failure. Logistic regression is used when the dependent variable is binary(0/1, True/False, Yes/No) in nature. Logit function is used as a link function in a binomial distribution.
+
+```{r}
+#mtcars is an inbuit dataset in R (Motor Trend Car Road Tests))
+
+# Installing the package
+install.packages("caTools")    # For Logistic regression
+install.packages("ROCR")       # For ROC curve to evaluate model
+```
+
+Loading the packages
+
+```{r}
+library(caTools)
+library(ROCR) 
+
+```
+
+### Splitting dataset
+
+```{r}
+split <- sample.split(mtcars, SplitRatio = 0.8)
+split
+```
+
+```{r}
+train_reg <- subset(mtcars, split == "TRUE")
+test_reg <- subset(mtcars, split == "FALSE")
+# glm(response ~ predictor, family = binomial(link = "logit"), data) 
+
+```
+
+### Training model
+
+```{r}
+logistic_model <- glm(vs ~ wt + disp, 
+                      data = train_reg, 
+                      family = "binomial")
+logistic_model
+
+# Summary
+summary(logistic_model)
+
+```
+
+Predict test data based on model
+
+```{r}
+predict_reg <- predict(logistic_model, 
+                       test_reg, type = "response")
+predict_reg  
+```
+
+Changing probabilities
+
+```{r}
+predict_reg <- ifelse(predict_reg >0.5, 1, 0)
+```
+
+### Evaluating model accuracy using confusion matrix
+
+```{r}
+table(test_reg$vs, predict_reg)
+
+missing_classerr <- mean(predict_reg != test_reg$vs)
+print(paste('Accuracy =', 1 - missing_classerr))
+```
+
+ROC-AUC Curve
+
+```{r}
+ROCPred <- prediction(predict_reg, test_reg$vs) 
+ROCPer <- performance(ROCPred, measure = "tpr", 
+                      x.measure = "fpr")
+
+auc <- performance(ROCPred, measure = "auc")
+auc <- auc@y.values[[1]]
+auc
+```
+
+### Plotting curve
+
+```{r}
+plot(ROCPer)
+plot(ROCPer, colorize = TRUE, 
+     print.cutoffs.at = seq(0.1, by = 0.1), 
+     main = "ROC CURVE")
+abline(a = 0, b = 1)
+
+auc <- round(auc, 4)
+legend(.6, .4, auc, title = "AUC", cex = 1)
+```
+
+### 

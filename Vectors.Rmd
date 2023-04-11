@@ -1,0 +1,152 @@
+# Vectors
+
+Here the Vectorization of numerical Values are Done.
+
+```{r}
+# Vector of numerical values
+numbers <- c(1, 2, 3)
+
+# Print numbers
+numbers
+```
+
+Vectorization of String datatype.
+
+```{r}
+#Vector in String values.
+xx<-c("A","B","C")
+
+xx
+
+```
+
+Vectorization in a Sequence.
+
+```{r}
+# Vector with numerical values in a sequence
+numbers <- 1:10
+
+numbers
+```
+
+Vectors with Numerical sequence
+
+```{r}
+# Vector with numerical decimals in a sequence
+numbers1 <- 12.33:6.33
+numbers1
+
+# Vector with numerical decimals in a sequence where the last element is not used
+numbers2 <- 1.5:6.3
+numbers2
+```
+
+Vectors and Logical values(T/F)
+
+```{r}
+# Vector of logical values
+log_values <- c(TRUE, FALSE, TRUE, FALSE)
+
+log_values
+```
+
+Vector length /length() fn
+
+```{r}
+fruits <- c("mango", "apple", "pear")
+
+length(fruits)
+```
+
+To sort items in a vector alphabetically or numerically, use the sort() function :
+
+```{r}
+xv <- c("X", "XX", "XXX", "XXXX", "XXXXX")
+numbers <- c(13, 3, 5, 7, 20, 2)
+
+sort(xv)  # Sort a string
+sort(fruits)
+sort(numbers) # Sort numbers
+
+```
+
+Accessing Vectors
+
+```{r}
+A <- c("AB", "CD", "EF")
+
+# Access the first item (banana)
+A[1]
+A[3]
+```
+
+You can also access multiple elements by referring to different index positions with the c() function:
+
+```{r}
+animals <-c("Cat","Dog","Horse","Monkey","Cow","Bull","Giraffee","Zebra")
+
+# Access the first and third item (cat and horse).
+animals[c(1, 3)]
+```
+
+You can also use negative index numbers to access all items except the ones specified:
+
+```{r}
+# Access all items except for the first item.
+#Unlike Pyton there is no backward indexing here "-" means without.
+animals[c(-1)]
+```
+
+To change the value of a specific item, refer to the index number:
+
+```{r}
+#First acces the element and then alter the vlaue.
+#(cat to Siberian Husky).
+animals[c(1)]<-"Siberian Husky"  
+animals
+```
+
+To repeat vectors, use the rep() function:
+
+```{r}
+#feed in an array.
+#Use the Rep(),and give parameters,ie values and how many times to repeat(each).
+arr <-c(1,2,3)
+repeat_each <- rep(arr, each = 3)
+repeat_each
+```
+
+for Repeating a sequence
+
+```{r}
+repeat_times <- rep(c(1,2,3), times = 3)
+
+repeat_times
+
+```
+
+Now to repeat each value independently
+
+```{r}
+#Just like repeating but this time 
+repeat_indepent <- rep(c(1,2,3), times = c(5,2,1))
+
+repeat_indepent
+```
+
+Generation of sequenced Vectors
+
+```{r}
+num <- 1:10
+
+num
+```
+
+To make bigger or smaller steps in a sequence, use the seq() function:
+
+```{r}
+n <- seq(from = 0, to = 100, by = 20)
+
+n
+
+```

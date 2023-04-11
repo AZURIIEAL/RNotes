@@ -1,0 +1,49 @@
+# Data Visualization using R
+
+Firstly load the data
+
+```{r}
+data <- read.csv("store.csv")
+
+```
+
+Do some basic analytics on the data
+
+```{r}
+View(data) #For viewing the data in a differnt table pane.
+```
+
+```{r}
+summary(data)
+```
+
+```{r}
+head(data)
+```
+
+```{r}
+print(data)
+  
+plot(x = data$Store ,y = data$CompetitionOpenSinceYear,
+     xlab = "Store",
+     ylab = "year",
+     main = "Plot"
+)
+```
+
+```{r}
+barplot(data$CompetitionOpenSinceMonth,
+        main = 'Stores',
+        xlab = 'Store Density', horiz = TRUE)
+```
+
+```{r}
+hist(data$CompetitionOpenSinceMonth, main ="Competition Density Month vice",
+    xlab ="Months",
+    col ="yellow",
+    freq = TRUE)
+```
+
+```{r}
+
+```

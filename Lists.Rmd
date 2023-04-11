@@ -1,0 +1,100 @@
+# Lists
+
+A list in R can contain many different data types inside it. A list is a collection of data which is ordered and changeable.Unlike Vectors which only can accommodate a single data type,we can also say that vectors are Homogeneous and lists are heterogeneous.
+
+To create a list, use the list() function:
+
+```{r}
+# List of strings
+l <- list("A", "B", "C",1,2,3,"!","@")
+
+# Print the list
+l
+```
+
+Accessing lists.
+
+```{r}
+thislist <- list("X", "y", 1)
+thislist[3]
+```
+
+To change the value of a specific item, refer to the index number:
+
+```{r}
+# x to b
+thislist[1] <- "b"
+
+# Print the updated list
+thislist
+```
+
+Length of a list.
+
+```{r}
+length(thislist)
+```
+
+## Check if Item Exists
+
+To find out if a specified item is present in a list, use the %in% operator:
+
+```{r}
+this <- list("apple", "banana", "cherry")
+
+"apple" %in% this
+
+```
+
+To add an item to the end of the list, use the append() function:
+
+```{r}
+append(this, 1)
+```
+
+add more as a vector
+
+```{r}
+append(this,c(1,2,3))
+```
+
+To add an item to the right of a specified index, add "after=indexnumber" in the append() function:
+
+```{r}
+append(this, "!@#%^", after = 3)
+```
+
+Removing items from the list
+
+```{r}
+newlist <- this[-1]
+
+# Print the new list
+newlist
+```
+
+Range of Indexes
+
+```{r}
+this2 <- list("A", "B", "C", "D", "E", "F", "G")
+
+(this2)[2:5]
+```
+
+Looping through a list using For Loop
+
+```{r}
+for (x in this2) {
+  print(x)
+}
+```
+
+Joining Two Lists
+
+```{r}
+list1 <- list("a", "b", "c")
+list2 <- list(1,2,3)
+list3 <- c(list1,list2)
+
+list3
+```
